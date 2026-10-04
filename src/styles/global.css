@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Light Mode Baseline ── */
+:root {
+  color-scheme: light dark;
+
+  --bg-canvas:     oklch(0.985 0.002 260);  /* Soft off-white canvas */
+  --bg-surface:    oklch(1.000 0.000 0 / 0.85); /* Card surface */
+  --bg-raised:     oklch(0.955 0.004 260);  /* Hover state */
+
+  --border-subtle: oklch(0.88 0.008 260 / 0.7);
+  --border-hover:  oklch(0.65 0.12 245 / 0.5);
+
+  --ink-primary:   oklch(0.14 0.010 260);  /* Primary dark text */
+  --ink-muted:     oklch(0.42 0.010 260);  /* Secondary muted text */
+  --ink-subtle:    oklch(0.60 0.008 260);  /* Metadata / dividers */
+
+  --accent:        oklch(0.52 0.22 245);  /* Electric blue */
+  --accent-hover:  oklch(0.45 0.22 245);
+  --accent-dim:    oklch(0.52 0.22 245 / 0.08);
+  --accent-border: oklch(0.52 0.22 245 / 0.25);
+  --accent-text:   oklch(0.46 0.22 245);
+
+  --glass-bg:      oklch(1.00 0.000 0 / 0.75);
+  --glass-border:  oklch(0.88 0.008 260 / 0.75);
+  --glass-shadow:  inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 20px rgba(0, 0, 0, 0.04);
+
+  --status-color:  oklch(0.50 0.18 152);
+  --status-bg:     oklch(0.50 0.18 152 / 0.08);
+  --status-border: oklch(0.50 0.18 152 / 0.25);
+}
+
+/* ── Dark Mode Baseline ── */
+html.dark, .dark {
+  --bg-canvas:     oklch(0.09 0.005 260);  /* Off-black canvas */
+  --bg-surface:    oklch(0.12 0.006 260);  /* Dark card surface */
+  --bg-raised:     oklch(0.16 0.008 260);  /* Dark hover state */
+
+  --border-subtle: oklch(0.35 0.01 260);
+  --border-hover:  oklch(0.45 0.06 230);
+
+  --ink-primary:   oklch(0.96 0.004 240);  /* Light text */
+  --ink-muted:     oklch(0.65 0.008 240);  /* Secondary text */
+  --ink-subtle:    oklch(0.50 0.006 240);  /* Metadata / dividers */
+
+  --accent:        oklch(0.55 0.20 245);  /* Electric blue */
+  --accent-hover:  oklch(0.60 0.20 245);
+  --accent-dim:    oklch(0.55 0.20 245 / 0.12);
+  --accent-border: oklch(0.55 0.20 245 / 0.18);
+  --accent-text:   oklch(0.65 0.20 245);
+
+  --glass-bg:      oklch(0.14 0.007 260 / 0.55);
+  --glass-border:  oklch(0.25 0.01 260 / 0.55);
+  --glass-shadow:  inset 0 1px 0 rgba(255, 255, 255, 0.06), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+
+  --status-color:  oklch(0.70 0.16 152);
+  --status-bg:     oklch(0.70 0.16 152 / 0.08);
+  --status-border: oklch(0.70 0.16 152 / 0.25);
+}
+
+@theme {
+  --font-sans: 'Geist', 'SF Pro Display', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', 'Cascadia Code', monospace;
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Smooth transitions for color properties */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Liquid Glass — adaptive ─── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-raised);
+}
+
+/* ── Hover Lift — design-taste: spring feel, hardware-accelerated ── */
+@media (prefers-reduced-motion: no-preference) {
+  .lift {
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .lift:hover {
+    transform: translateY(-3px);
+  }
+
+  .lift:active {
+    transform: translateY(-1px) scale(0.99);
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .enter     { animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .enter-d1  { animation-delay: 0.08s; }
+  .enter-d2  { animation-delay: 0.16s; }
+  .enter-d3  { animation-delay: 0.24s; }
+  .enter-d4  { animation-delay: 0.32s; }
+}
+
+.accent-line {
+  background: var(--accent);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: var(--bg-canvas); }
+::-webkit-scrollbar-thumb  { background: var(--border-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }

@@ -1,0 +1,37 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--border-subtle)] mt-0">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+
+    <div>
+      <p class="text-sm font-semibold text-[var(--ink-primary)]">Matthew</p>
+      <p class="text-xs font-mono text-[var(--ink-muted)] mt-0.5">
+        Full-Stack Web Developer &mdash; Laravel, Livewire, Filament
+      </p>
+      <p class="text-xs text-[var(--ink-subtle)] mt-1">
+        &copy; {currentYear} &middot; Built with Astro &amp; Tailwind CSS
+      </p>
+    </div>
+
+    <nav class="flex items-center gap-5 text-xs font-mono text-[var(--ink-muted)]" aria-label="Footer navigation">
+      <a href="https://github.com/matthewwilliamberces-droid" target="_blank" rel="noopener noreferrer"
+        class="hover:text-[var(--ink-primary)] transition-colors focus:outline-none focus-visible:underline">
+        GitHub
+      </a>
+      <a href="https://www.fiverr.com/matthewberces?public_mode=true" target="_blank" rel="noopener noreferrer"
+        class="hover:text-[var(--accent)] transition-colors focus:outline-none focus-visible:underline">
+        Fiverr
+      </a>
+      <a href="/rss.xml"
+        class="hover:text-[var(--ink-primary)] transition-colors focus:outline-none focus-visible:underline">
+        RSS
+      </a>
+      <a href="#top"
+        class="hover:text-[var(--ink-primary)] transition-colors focus:outline-none focus-visible:underline">
+        &#x2191; Top
+      </a>
+    </nav>
+  </div>
+</footer>

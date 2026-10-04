@@ -1,0 +1,54 @@
+---
+// Hero section — Brutalist, oversized typography, high tension
+---
+
+<section class="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden pt-20">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none fixed inset-0 -z-10"
+    style="background: radial-gradient(ellipse 70% 50% at 50% 0%, var(--accent-dim) 0%, transparent 70%);"
+  ></div>
+
+  <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+    
+    <div class="enter max-w-5xl">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="text-xs font-mono font-medium uppercase tracking-widest text-[var(--accent-text)]">Matthew</span>
+        <span class="w-12 h-px bg-[var(--border-subtle)]"></span>
+        <span class="text-xs font-mono text-[var(--ink-subtle)]">Independent Systems Engineer</span>
+      </div>
+
+      <!-- Brutally large typography with serif contrast -->
+      <h1 class="text-[clamp(3.5rem,8vw,7.5rem)] leading-[0.9] tracking-tighter text-[var(--ink-primary)] font-serif italic mb-6">
+        Architecting <br />
+        <span class="font-sans not-italic font-extrabold tracking-tight">SaaS Platforms.</span>
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-16 items-start mt-12 border-t border-[var(--border-subtle)] pt-12">
+        <p class="text-lg md:text-xl text-[var(--ink-muted)] leading-relaxed max-w-[38ch] font-medium">
+          I build production-grade web applications and high-availability infrastructure using Laravel, Livewire, and Filament. Zero shortcuts.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <a
+            href="https://www.fiverr.com/matthewberces?public_mode=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-[var(--ink-primary)] hover:text-[var(--accent-text)] transition-colors border-b border-[var(--ink-primary)] hover:border-[var(--accent-text)] pb-1"
+          >
+            Hire me on Fiverr
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          
+          <div class="flex items-center gap-2 px-3 py-1.5 border border-[var(--status-border)] text-[var(--status-color)] text-xs font-mono">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--status-color)] animate-pulse"></span>
+            Accepting new projects
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>

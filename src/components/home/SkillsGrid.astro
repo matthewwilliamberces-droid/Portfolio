@@ -1,0 +1,57 @@
+---
+const skillCategories = [
+  {
+    title: "Backend Core",
+    skills: ["Laravel 11", "PHP 8.x", "Livewire 3", "Filament v3", "Alpine.js"],
+  },
+  {
+    title: "Infrastructure",
+    skills: ["MySQL", "PostgreSQL", "Redis", "Docker", "Sail", "Herd"],
+  },
+  {
+    title: "Testing & Quality",
+    skills: ["Pest PHP", "Telescope", "Strict Mode N+1 Prevention"],
+  },
+  {
+    title: "Integrations",
+    skills: ["Stripe Cashier", "Xendit", "Spatie Permissions", "Media Library"],
+  },
+  {
+    title: "Front-End",
+    skills: ["Tailwind CSS v4", "Astro", "JavaScript", "TypeScript"],
+  },
+];
+---
+
+<section id="skills" class="py-32 border-t border-[var(--border-subtle)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="mb-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-[var(--ink-subtle)] mb-4">Engineering Stack</p>
+      <h2 class="text-5xl sm:text-6xl font-serif italic text-[var(--ink-primary)] leading-none tracking-tight">
+        Technical <span class="font-sans not-italic font-extrabold tracking-tighter">Capabilities</span>
+      </h2>
+    </div>
+
+    <!-- Brutalist, card-less layout. Just heavy typography and lines. -->
+    <div class="border-t border-[var(--border-subtle)]">
+      {skillCategories.map((cat) => (
+        <div class="group grid grid-cols-1 md:grid-cols-4 gap-4 py-8 border-b border-[var(--border-subtle)] hover:border-[var(--ink-primary)] transition-colors enter">
+          <div class="md:col-span-1">
+            <h3 class="text-sm font-mono font-bold text-[var(--ink-primary)]">{cat.title}</h3>
+          </div>
+          <div class="md:col-span-3">
+            <ul class="flex flex-wrap gap-x-6 gap-y-2">
+              {cat.skills.map((skill) => (
+                <li class="text-lg md:text-xl font-medium text-[var(--ink-muted)] group-hover:text-[var(--ink-primary)] transition-colors">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,111 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const navLinks = [
+  { href: '/#projects',    label: 'Projects' },
+  { href: '/#experience',  label: 'Experience' },
+  { href: '/#skills',      label: 'Skills' },
+  { href: '/#contact',     label: 'Contact' },
+];
+---
+
+<!-- Sticky glassmorphic nav -->
+<header
+  class="sticky top-0 z-40 w-full border-b border-[var(--border-subtle)] backdrop-blur-xl"
+  style="background: var(--glass-bg); backdrop-filter: blur(24px) saturate(160%); box-shadow: var(--glass-shadow);"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+    <!-- Brand -->
+    <a
+      href="/"
+      class="group flex items-center gap-2.5 font-semibold text-[var(--ink-primary)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-border)] rounded-md"
+    >
+      <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--accent)] text-white font-mono text-sm font-bold group-hover:bg-[var(--accent-hover)] transition-colors">
+        M
+      </span>
+      <div class="flex flex-col leading-tight">
+        <span class="text-sm font-bold tracking-tight text-[var(--ink-primary)]">Matthew</span>
+        <span class="text-[10px] font-mono text-[var(--ink-subtle)] tracking-wide">Laravel · Livewire · Filament</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-0.5 text-sm font-medium" aria-label="Main Navigation">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="px-3 py-1.5 rounded-md text-[var(--ink-muted)] hover:text-[var(--ink-primary)] hover:bg-[var(--bg-raised)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-border)]"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right controls -->
+    <div class="flex items-center gap-2.5">
+      <!-- Status -->
+      <div class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono border border-[var(--status-border)] bg-[var(--status-bg)] text-[var(--status-color)]">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--status-color)] animate-pulse"></span>
+        Available
+      </div>
+
+      <ThemeToggle />
+
+      <!-- Mobile hamburger -->
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="md:hidden p-2 rounded-lg text-[var(--ink-muted)] hover:text-[var(--ink-primary)] hover:bg-[var(--bg-raised)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-border)] transition-colors"
+      >
+        <svg id="menu-open-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+        </svg>
+        <svg id="menu-close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-[var(--border-subtle)] px-4 pt-3 pb-5 space-y-1"
+    style="background: var(--bg-surface); backdrop-filter: blur(20px);"
+  >
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="block px-3 py-2.5 rounded-md text-sm font-medium text-[var(--ink-muted)] hover:bg-[var(--bg-raised)] hover:text-[var(--ink-primary)] transition-colors"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</header>
+
+<script is:inline>
+  const initMobileMenu = () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const openIcon = document.getElementById('menu-open-icon');
+    const closeIcon = document.getElementById('menu-close-icon');
+    if (!btn || !menu || !openIcon || !closeIcon) return;
+    const toggle = () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    };
+    btn.addEventListener('click', toggle);
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { if (!menu.classList.contains('hidden')) toggle(); }));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.classList.contains('hidden')) toggle(); });
+  };
+  initMobileMenu();
+  document.addEventListener('astro:after-swap', initMobileMenu);
+</script>

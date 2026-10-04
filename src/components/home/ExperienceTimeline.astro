@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+
+const allExperience = await getCollection('experience');
+const sortedExperience = allExperience.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+---
+
+<section id="experience" class="py-32 border-t border-[var(--border-subtle)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="mb-20">
+      <p class="text-xs font-mono uppercase tracking-widest text-[var(--ink-subtle)] mb-4">Work History</p>
+      <h2 class="text-5xl sm:text-6xl font-serif italic text-[var(--ink-primary)] leading-none tracking-tight">
+        Professional <span class="font-sans not-italic font-extrabold tracking-tighter">Experience</span>
+      </h2>
+    </div>
+
+    <!-- Editorial, card-less timeline -->
+    <div class="flex flex-col border-t border-[var(--border-subtle)]">
+      {sortedExperience.map((item) => (
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 py-16 border-b border-[var(--border-subtle)] enter">
+          
+          <!-- Meta data (Left column) -->
+          <div class="md:col-span-3 flex flex-col items-start gap-4">
+            <span class="text-sm font-mono text-[var(--ink-primary)]">
+              {item.data.startDate} — {item.data.current ? 'Present' : item.data.endDate}
+            </span>
+            {item.data.current && (
+              <span class="px-2 py-1 text-[10px] font-mono uppercase tracking-widest text-[var(--status-color)] border border-[var(--status-border)] rounded-full">
+                Active Role
+              </span>
+            )}
+          </div>
+
+          <!-- Content (Right columns) -->
+          <div class="md:col-span-9 flex flex-col">
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--ink-primary)]">
+              {item.data.role}
+            </h3>
+            
+            <div class="mt-2 text-lg text-[var(--ink-muted)] font-serif italic">
+              {item.data.companyUrl ? (
+                <a href={item.data.companyUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink-primary)] transition-colors border-b border-transparent hover:border-[var(--ink-primary)]">
+                  {item.data.company}
+                </a>
+              ) : (
+                <span>{item.data.company}</span>
+              )}
+              <span class="mx-2 not-italic text-[var(--ink-subtle)]">/</span>
+              <span class="not-italic text-sm font-mono text-[var(--ink-subtle)]">{item.data.location}</span>
+            </div>
+
+            <ul class="mt-8 space-y-4">
+              {item.data.highlights.map((h) => (
+                <li class="relative pl-6 text-base text-[var(--ink-muted)] leading-relaxed max-w-[65ch]">
+                  <span class="absolute left-0 top-[0.6rem] w-2 h-[1px] bg-[var(--ink-subtle)]"></span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

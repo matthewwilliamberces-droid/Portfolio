@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import FeaturedProjects from '../components/home/FeaturedProjects.astro';
+import ExperienceTimeline from '../components/home/ExperienceTimeline.astro';
+import SkillsGrid from '../components/home/SkillsGrid.astro';
+import ContactSection from '../components/home/ContactSection.astro';
+---
+
+<BaseLayout
+  title="Matthew | Full-Stack Web Developer — Laravel, Livewire, Filament"
+  description="Full-Stack Web Developer specializing in Laravel 11, Livewire 3, and Filament v3. I build SaaS platforms, admin dashboards, and scalable web applications."
+>
+  <Hero />
+  <FeaturedProjects />
+  <ExperienceTimeline />
+  <SkillsGrid />
+  <ContactSection />
+</BaseLayout>

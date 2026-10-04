@@ -1,0 +1,89 @@
+---
+import Header from '../components/common/Header.astro';
+import Footer from '../components/common/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Matthew | Full-Stack Web Developer — Laravel, Livewire, Filament",
+  description = "Full-Stack Web Developer specializing in Laravel 11, Livewire 3, and Filament v3. I build SaaS platforms, admin dashboards, and scalable web applications.",
+  image = "/og-default.png",
+  canonicalUrl = Astro.url.href,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
+    <!-- Zero-FOUC Blocking Theme Initializer -->
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('theme');
+          if (stored === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else if (stored === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (_) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body
+    id="top"
+    class="min-h-screen flex flex-col antialiased selection:bg-[var(--accent)] selection:text-white"
+  >
+    <!-- Accessible Skip to Content Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--accent)] focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none"
+    >
+      Skip to main content
+    </a>
+
+    <Header />
+
+    <main id="main-content" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-0">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

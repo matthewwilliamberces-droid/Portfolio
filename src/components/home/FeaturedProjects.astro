@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+---
+
+<section id="projects" class="py-32 border-t border-[var(--border-subtle)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="mb-24 md:flex items-end justify-between">
+      <div>
+        <p class="text-xs font-mono uppercase tracking-widest text-[var(--ink-subtle)] mb-4">Selected Work</p>
+        <h2 class="text-5xl sm:text-6xl font-serif italic text-[var(--ink-primary)] leading-none tracking-tight">
+          Featured <span class="font-sans not-italic font-extrabold tracking-tighter">Projects</span>
+        </h2>
+      </div>
+      <a
+        href="/projects"
+        class="mt-8 md:mt-0 inline-block text-sm font-bold uppercase tracking-widest text-[var(--ink-primary)] border-b border-[var(--border-subtle)] hover:border-[var(--ink-primary)] transition-colors pb-1"
+      >
+        View Archive
+      </a>
+    </div>
+
+    <div class="flex flex-col">
+      {featuredProjects.map((project, i) => (
+        <article class="group relative py-16 sm:py-24 border-t border-[var(--border-subtle)] enter" style={`animation-delay: ${i * 0.1}s;`}>
+          <!-- Asymmetrical Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
+            
+            <!-- Left: Meta & Title -->
+            <div class="md:col-span-5 flex flex-col">
+              <div class="flex items-center gap-4 text-xs font-mono text-[var(--ink-subtle)] mb-6">
+                <span>0{i + 1}</span>
+                <span class="w-8 h-px bg-[var(--border-subtle)]"></span>
+                <time datetime={project.data.publishDate.toISOString()}>
+                  {project.data.publishDate.getFullYear()}
+                </time>
+              </div>
+              
+              <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--ink-primary)] group-hover:text-[var(--accent-text)] transition-colors">
+                <a href={`/projects/${project.id}`} class="focus:outline-none">
+                  {project.data.title}
+                  <span class="absolute inset-0 z-10" aria-hidden="true"></span>
+                </a>
+              </h3>
+              
+              <p class="mt-4 text-sm font-mono text-[var(--ink-muted)]">
+                {project.data.role}
+              </p>
+            </div>
+
+            <!-- Right: Description & Tags -->
+            <div class="md:col-span-7 flex flex-col">
+              <p class="text-lg text-[var(--ink-muted)] leading-relaxed max-w-[45ch]">
+                {project.data.description}
+              </p>
+
+              {project.data.impact && (
+                <div class="mt-8 pt-6 border-t border-[var(--border-subtle)] border-dashed">
+                  <p class="text-sm font-mono text-[var(--ink-primary)]">
+                    <span class="text-[var(--accent-text)]">→ Impact:</span> {project.data.impact}
+                  </p>
+                </div>
+              )}
+
+              <div class="mt-10 flex flex-wrap items-center justify-between gap-4 relative z-20">
+                <div class="flex flex-wrap gap-2">
+                  {project.data.tags.map((tag) => (
+                    <span class="px-3 py-1 text-xs font-mono text-[var(--ink-muted)] border border-[var(--border-subtle)] rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div class="flex items-center gap-4">
+                  {project.data.isPrivate && (
+                    <span class="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--ink-subtle)]" title="Private Commercial Codebase">
+                      <svg class="w-3.5 h-3.5 text-[var(--ink-subtle)]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                      </svg>
+                      Private Repo
+                    </span>
+                  )}
+
+                  {project.data.githubUrl && (
+                    <a
+                      href={project.data.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1 text-xs font-mono font-medium text-[var(--ink-muted)] hover:text-[var(--ink-primary)] transition-colors"
+                    >
+                      GitHub &nearr;
+                    </a>
+                  )}
+
+                  {project.data.liveUrl && (
+                    <a
+                      href={project.data.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[var(--accent-text)] hover:text-[var(--accent-hover)] transition-colors"
+                    >
+                      Live Demo &nearr;
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
