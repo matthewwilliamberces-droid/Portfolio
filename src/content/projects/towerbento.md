@@ -5,7 +5,6 @@ publishDate: 2026-10-01
 featured: true
 order: 1
 tags: ["Laravel 11", "Livewire 3", "Filament v3", "Stripe", "Leaflet", "Pest", "Tailwind CSS", "PostgreSQL"]
-liveUrl: "https://www.towerbento.matthewberces.dev/"
 isPrivate: true
 role: "Solo Developer & Founder"
 impact: "225+ passing automated tests. Zero N+1 query regressions via strict development lazy-loading. Multi-tenant brokerage portals with Stripe Cashier & ACH billing, Leaflet interactive mapping, and verified state licensing compliance."
@@ -58,6 +57,7 @@ TowerBento enforces state-specific licensing validation standards:
 - **Admin & Tenant Panels**: Filament v3 (Panel, Table, Form Builders)
 - **Mapping**: Leaflet.js with CartoDB Positron tiles
 - **Database & Cache**: PostgreSQL / MySQL / SQLite with Redis session and queue management
+- **Deployment**: Hetzner VPS + Coolify ([towerbento.matthewberces.dev](https://www.towerbento.matthewberces.dev/))
 - **Payments**: Stripe Cashier (Cards, ACH Direct Debit, Wire Transfers)
 - **Media Engine**: Spatie Laravel Media Library with optimized responsive thumbnails
 - **Test Suite**: 225+ Pest tests verifying tenant data isolation, billing state machines, and listing permissions

@@ -40,7 +40,12 @@ const sortedExperience = allExperience.sort((a, b) => (a.data.order ?? 0) - (b.d
             
             <div class="mt-2 text-lg text-[var(--ink-muted)] font-serif italic">
               {item.data.companyUrl ? (
-                <a href={item.data.companyUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--ink-primary)] transition-colors border-b border-transparent hover:border-[var(--ink-primary)]">
+                <a
+                  href={item.data.companyUrl}
+                  target={item.data.companyUrl.startsWith('http') ? '_blank' : undefined}
+                  rel={item.data.companyUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  class="hover:text-[var(--ink-primary)] transition-colors border-b border-transparent hover:border-[var(--ink-primary)]"
+                >
                   {item.data.company}
                 </a>
               ) : (

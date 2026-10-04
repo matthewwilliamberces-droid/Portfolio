@@ -27,5 +27,6 @@ This portfolio site is itself a project — a demonstration that I can build cle
 
 - **Framework**: Astro 7
 - **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`)
+- **Deployment**: Hetzner VPS + Coolify ([matthewberces.dev](https://matthewberces.dev))
 - **Type-checking**: `@astrojs/check` — strict TypeScript
 - **SEO**: Auto-generated sitemap + RSS feed via `@astrojs/sitemap`

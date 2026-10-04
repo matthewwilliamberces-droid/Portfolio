@@ -1,7 +1,7 @@
 ---
 role: "Solo Developer & Founder"
 company: "TowerBento US"
-companyUrl: "https://www.towerbento.matthewberces.dev/"
+companyUrl: "/projects/towerbento"
 startDate: "Jan 2026"
 endDate: "Present"
 current: true

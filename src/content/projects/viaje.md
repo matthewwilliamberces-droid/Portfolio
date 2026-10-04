@@ -28,3 +28,4 @@ Viaje is a car rental management system built to handle the complete lifecycle o
 - **Admin Panel**: Filament v3
 - **Frontend**: Tailwind CSS + Alpine.js
 - **Database**: MySQL with optimized date-range conflict queries
+- **Deployment**: Hetzner VPS + Coolify ([viaje.matthewberces.dev](https://www.viaje.matthewberces.dev/))
