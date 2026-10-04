@@ -6,7 +6,7 @@ featured: true
 order: 3
 tags: ["Laravel", "PHP", "Livewire", "Tailwind", "MySQL"]
 githubUrl: "https://github.com/matthewwilliamberces-droid/viajecarrental"
-liveUrl: "https://viaje.matthewberces.dev"
+liveUrl: "https://www.viaje.matthewberces.dev/"
 role: "Full-Stack Developer"
 impact: "2-day minimum to 1-month rental booking engine with real-time availability conflict detection. Multi-step reservation wizard reduces booking abandonment."
 ---

@@ -5,6 +5,7 @@ publishDate: 2026-10-01
 featured: true
 order: 1
 tags: ["Laravel 11", "Livewire 3", "Filament v3", "Stripe", "Leaflet", "Pest", "Tailwind CSS", "PostgreSQL"]
+liveUrl: "https://www.towerbento.matthewberces.dev/"
 isPrivate: true
 role: "Solo Developer & Founder"
 impact: "225+ passing automated tests. Zero N+1 query regressions via strict development lazy-loading. Multi-tenant brokerage portals with Stripe Cashier & ACH billing, Leaflet interactive mapping, and verified state licensing compliance."
