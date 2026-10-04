@@ -5,7 +5,8 @@ publishDate: 2026-09-27
 featured: true
 order: 4
 tags: ["Astro", "Tailwind", "JavaScript"]
-githubUrl: "https://github.com/matthewwilliamberces-droid"
+githubUrl: "https://github.com/matthewwilliamberces-droid/Portfolio"
+liveUrl: "https://matthewberces.dev"
 role: "Developer & Designer"
 impact: "Static build in under 1.4s. Zero JavaScript shipped to the browser by default. Strict TypeScript — 0 errors, 0 warnings on astro check."
 ---
