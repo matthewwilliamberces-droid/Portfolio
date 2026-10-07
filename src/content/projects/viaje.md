@@ -3,7 +3,7 @@ title: "Viaje — Car Rental Management System"
 description: "A full-stack car rental management system with date-based vehicle availability, multi-step booking flow, and an admin panel for fleet and reservation management."
 publishDate: 2026-08-30
 featured: true
-order: 3
+order: 4
 tags: ["Laravel", "PHP", "Livewire", "Tailwind", "MySQL"]
 githubUrl: "https://github.com/matthewwilliamberces-droid/viajecarrental"
 liveUrl: "https://www.viaje.matthewberces.dev/"

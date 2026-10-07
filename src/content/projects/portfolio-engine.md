@@ -3,7 +3,7 @@ title: "This Portfolio Website"
 description: "A dark-first, glassmorphic developer portfolio built with Astro 7 and Tailwind CSS v4. Zero-JS baseline, zero-FOUC dark mode, and content-collection-driven project case studies."
 publishDate: 2026-09-27
 featured: true
-order: 4
+order: 5
 tags: ["Astro", "Tailwind", "JavaScript"]
 githubUrl: "https://github.com/matthewwilliamberces-droid/Portfolio"
 liveUrl: "https://matthewberces.dev"

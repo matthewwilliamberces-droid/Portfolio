@@ -3,7 +3,7 @@ title: "Hungry Humans — Restaurant Static Site"
 description: "A bold, mobile-first static website for an unlimited chicken wings restaurant. Built with Astro and Tailwind CSS — featuring a visual menu grid, sauce catalog, group meal pricing cards, and responsive mobile layout."
 publishDate: 2026-09-04
 featured: true
-order: 2
+order: 3
 tags: ["Astro", "Tailwind", "JavaScript"]
 liveUrl: "https://hungry-humans.vercel.app/"
 role: "Front-End Developer"
